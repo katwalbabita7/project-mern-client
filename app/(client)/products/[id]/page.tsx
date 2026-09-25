@@ -18,6 +18,7 @@ import ProductNotFound from "@/app/components/client/products/ProductNotFound";
 import ProductPurchaseSection from "@/app/components/client/products/ProductPurchaseSection";
 import ProductInfo from "@/app/components/client/products/ProductInfo";
 import ProductImageGallery from "@/app/components/client/products/ProductImageGallery";
+import { useRouter } from "next/navigation";
 
 export default function ProductDetailPage({
   params,
@@ -25,12 +26,14 @@ export default function ProductDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
+  const router = useRouter();
   const queryClient = useQueryClient();
   const { isAuthenticated } = useAuthStore();
 
   const [selectedImgIndex, setSelectedImgIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+const [isBuyingNow, setIsBuyingNow] = useState(false);
 
   const { data: productData, isLoading, error } = useQuery<ProductDetailResponse>({
     queryKey: ["product-detail", id],
@@ -86,6 +89,32 @@ export default function ProductDetailPage({
       return;
     }
     wishlistMutation.mutate();
+  };
+  const handleBuyNow = async () => {
+    if (!isAuthenticated) {
+      toast.error("Please login to buy this product");
+      return;
+    }
+    if (!product || product.stock <= 0) {
+      toast.error("This product is out of stock");
+      return;
+    }
+
+    setIsBuyingNow(true);
+    try {
+      await addToCart({
+        product: product._id,
+        quantity,
+        price: product.discountPrice || product.price,
+      });
+      queryClient.invalidateQueries({ queryKey: ["cart"] });
+      toast.success("Taking you to cart...");
+      router.push("/cart");
+    } catch (err: any) {
+      toast.error(err?.message || "Failed to process Buy Now");
+    } finally {
+      setIsBuyingNow(false);
+    }
   };
 
   if (isLoading) return <ProductDetailLoading />;
@@ -171,6 +200,8 @@ export default function ProductDetailPage({
             isAddingToWishlist={wishlistMutation.isPending}
             onAddToCart={handleAddToCart}
             onWishlist={handleWishlist}
+            onBuyNow={handleBuyNow}
+            isBuyingNow={isBuyingNow}
           />
         </div>
       </div>

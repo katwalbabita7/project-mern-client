@@ -14,7 +14,7 @@ const faqs = [
   {
     question: "What payment methods are supported on Nepali Store?",
     answer:
-      "We offer Cash on Delivery (COD) for most locations across Nepal. In addition, we support digital payments via eSewa, Khalti, and ConnectIPS / Mobile Banking.",
+      "We offer Cash on Delivery (COD) for most locations across Nepal. In addition, we support digital payments via Khalti",
   },
   {
     question: "How do I check the status of my order?",

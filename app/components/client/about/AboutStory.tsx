@@ -29,7 +29,7 @@ const AboutStory = () => {
           </p>
 
           <p className="text-neutral-700 leading-relaxed text-sm sm:text-base">
-            We curate high-quality products directly from verified brands and
+            We arrange high-quality products directly from verified brands and
             trusted local suppliers. Whether you are looking for modern
             electronics, daily fashion, traditional craftsmanship, or lifestyle
             accessories, we ensure every product meets high standards before it
@@ -61,7 +61,7 @@ const AboutStory = () => {
 
         {/* Right Card */}
         <div className="relative">
-          <div className="bg-linear-to-tr from-[#091426] to-[#0058BE] p-8 sm:p-10 rounded-2xl text-white shadow-xl space-y-6">
+          <div className="bg-linear-to-tr from-[#183055] to-[#0058BE] p-8 sm:p-10 rounded-2xl text-white shadow-xl space-y-6">
             <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center text-white text-2xl font-bold border border-white/20">
               🇳🇵
             </div>

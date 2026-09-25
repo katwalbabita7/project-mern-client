@@ -82,23 +82,29 @@ export const MyOrders: React.FC = () => {
             key={order._id}
             className="bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-shadow"
           >
-            {/* Card Header */}
-            <div className="bg-neutral-50 px-5 py-3.5 border-b border-neutral-200 flex flex-wrap items-center justify-between gap-3 text-sm">
-              <div className="flex items-center gap-3">
-                <span className="font-mono font-bold text-gray-900">
-                  {order.orderNumber}
-                </span>
-                <span className="text-gray-400">•</span>
-                <span className="flex items-center gap-1 text-gray-500 text-xs">
-                  <LuCalendar size={13} /> {orderDate}
-                </span>
-              </div>
+  {/* Card Header */}
+<div className="bg-neutral-50 px-5 py-3.5 border-b border-neutral-200 flex flex-wrap items-center justify-between gap-3 text-sm">
+  <div className="flex items-center gap-3">
+    <span className="font-mono font-bold text-gray-900">
+      {order.orderNumber}
+    </span>
+    <span className="text-gray-400">•</span>
+    <span className="flex items-center gap-1 text-gray-500 text-xs">
+      <LuCalendar size={13} /> {orderDate}
+    </span>
+  </div>
 
-              <div className="flex items-center gap-2">
-                <OrderStatusBadge status={order.orderStatus} />
-                <PaymentStatusBadge status={order.paymentStatus} />
-              </div>
-            </div>
+  <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+    <div className="flex items-center gap-1.5">
+      <span className="text-xs text-gray-500 font-medium">Order:</span>
+      <OrderStatusBadge status={order.orderStatus} />
+    </div>
+    <div className="flex items-center gap-1.5">
+      <span className="text-xs text-gray-500 font-medium">Payment:</span>
+      <PaymentStatusBadge status={order.paymentStatus} />
+    </div>
+  </div>
+</div>
 
             {/* Card Content */}
             <div className="p-5 space-y-4">

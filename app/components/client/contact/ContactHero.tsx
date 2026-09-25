@@ -12,7 +12,7 @@ const ContactHero = () => {
         </h1>
         <p className="text-sm sm:text-base text-neutral-200 max-w-2xl mx-auto">
           Have questions about an order, product inquiries, or feedback? Contact
-          our dedicated support team in Kathmandu anytime.
+          our dedicated support team in Biratnager anytime.
         </p>
       </div>
       <div className="absolute top-0 right-0 w-80 h-80 bg-[#0058BE]/30 rounded-full blur-3xl pointer-events-none" />

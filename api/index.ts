@@ -42,6 +42,11 @@ api.interceptors.response.use(
   (error) => {
     const message = error?.response?.data?.message;
     const status = error?.response?.status;
+    const requestUrl = error?.config?.url || "";
+    const isAuthRoute =
+      requestUrl.includes("/auth/login") ||
+      requestUrl.includes("/auth/register") ||
+      requestUrl.includes("/admin/auth/login");
 
     if (
       status === 401 ||

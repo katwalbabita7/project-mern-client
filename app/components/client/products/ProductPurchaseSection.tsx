@@ -1,3 +1,4 @@
+
 "use client";
 
 import {
@@ -7,6 +8,7 @@ import {
   LuTruck,
   LuShieldCheck,
   LuRotateCcw,
+  LuZap,
 } from "react-icons/lu";
 import { ProductPurchaseSectionProps } from "@/app/types/client/product";
 
@@ -23,7 +25,12 @@ export default function ProductPurchaseSection({
   isAddingToWishlist,
   onAddToCart,
   onWishlist,
-}: ProductPurchaseSectionProps) {
+  onBuyNow,           
+  isBuyingNow,        
+}: ProductPurchaseSectionProps & {
+  onBuyNow?: () => void;
+  isBuyingNow?: boolean;
+}) {
   return (
     <div className="space-y-5 pt-6 border-t border-neutral-200">
       {/* Quantity */}
@@ -89,6 +96,26 @@ export default function ProductPurchaseSection({
 
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row gap-3">
+        {/* Buy Now */}
+        <button
+          onClick={onBuyNow}
+          disabled={product.stock <= 0 || isBuyingNow || isAddingToCart}
+          className={`flex-1 flex items-center justify-center gap-2 py-3 px-6 rounded-md font-semibold text-white transition-all shadow-sm cursor-pointer ${
+            product.stock > 0
+              ? "bg-[#0058BE] hover:bg-secondary-700"
+              : "bg-neutral-300 cursor-not-allowed"
+          }`}
+        >
+          {isBuyingNow ? (
+            "Processing..."
+          ) : (
+            <>
+              <LuZap size={20} /> Buy Now
+            </>
+          )}
+        </button>
+
+        {/* Add to Cart */}
         <button
           onClick={onAddToCart}
           disabled={product.stock <= 0 || isAddingToCart}
@@ -96,7 +123,7 @@ export default function ProductPurchaseSection({
             added
               ? "bg-emerald-600 hover:bg-emerald-700"
               : product.stock > 0
-              ? "bg-[#091426] hover:bg-[#0058BE]"
+              ? "bg-[#091426] hover:bg-[#1a2a44]"
               : "bg-neutral-300 cursor-not-allowed"
           }`}
         >
@@ -111,6 +138,7 @@ export default function ProductPurchaseSection({
           )}
         </button>
 
+        {/* Wishlist */}
         <button
           onClick={onWishlist}
           disabled={isAddingToWishlist}

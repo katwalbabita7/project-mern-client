@@ -61,7 +61,7 @@ const ContactForm = () => {
             <input
               type="text"
               {...register("fullName")}
-              placeholder="e.g. Ramesh Thapa"
+              placeholder="e.g. Ram"
               className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-neutral-800 bg-white placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0058BE] transition ${
                 errors.fullName
                   ? "border-red-500 focus:ring-red-500"
@@ -81,7 +81,7 @@ const ContactForm = () => {
             <input
               type="email"
               {...register("email")}
-              placeholder="e.g. ramesh@example.com"
+              placeholder="e.g. ram@example.com"
               className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-neutral-800 bg-white placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0058BE] transition ${
                 errors.email
                   ? "border-red-500 focus:ring-red-500"

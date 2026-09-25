@@ -14,16 +14,22 @@ export default function ProductInfo({
   return (
     <div className="space-y-4">
       {/* Badges */}
-      <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
         {brandName && (
-          <span className="bg-neutral-100 text-neutral-700 text-xs font-semibold px-2.5 py-1 rounded-md">
-            {brandName}
-          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-neutral-500 font-medium">Brand:</span>
+            <span className="bg-neutral-100 text-neutral-700 text-xs font-semibold px-2.5 py-1 rounded-md">
+              {brandName}
+            </span>
+          </div>
         )}
         {categoryName && (
-          <span className="bg-secondary-50 text-secondary-700 text-xs font-semibold px-2.5 py-1 rounded-md">
-            {categoryName}
-          </span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-neutral-500 font-medium">Category:</span>
+            <span className="bg-secondary-50 text-secondary-700 text-xs font-semibold px-2.5 py-1 rounded-md">
+              {categoryName}
+            </span>
+          </div>
         )}
         {product.new_arrival && (
           <span className="bg-tertiary-50 text-tertiary-700 text-xs font-semibold px-2.5 py-1 rounded-md">

@@ -11,6 +11,7 @@ export interface Product {
   discountPrice?: number;
   image?: ProductImage;
   images?: ProductImage[];
+  stock?: number;
   // add other product fields you use
 }
 // Cart Item
